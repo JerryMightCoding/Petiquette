@@ -4,132 +4,165 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
+    -webkit-tap-highlight-color: transparent; /* 去除iOS点击高亮 */
 }
 
 body {
-    background-color: #f5f5f5;
+    background-color: #f8f9fa; /* 更柔和的背景色 */
     color: #333;
     line-height: 1.6;
     overflow: hidden;
+    font-smoothing: antialiased; /* 平滑字体 */
+    -webkit-font-smoothing: antialiased;
 }
 
 .container {
     width: 100vw;
     height: 100vh;
     margin: 0;
-    padding: 10px;
+    padding: 15px; /* 增加内边距 */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: #fff;
 }
 
 header {
     text-align: center;
-    margin-bottom: 15px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    color: #6c757d;
+    padding: 15px 10px;
+    border-radius: 15px;
+    border: 2px solid #e9ecef;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 header h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 0;
+    font-weight: 600;
+    color: #495057;
+    letter-spacing: -0.5px;
 }
 
 /* 模式选择器 */
 .mode-selector {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 20px 15px;
+    border-radius: 15px;
+    border: 2px solid #e9ecef;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .mode-selector h2 {
-    margin-bottom: 15px;
-    color: #333;
-    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: #495057;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .mode-btn {
-    padding: 12px 24px;
-    margin: 0 8px 10px 8px;
-    font-size: 1rem;
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    padding: 15px 24px;
+    margin: 0 8px 12px 8px;
+    font-size: 1.1rem;
+    background-color: #fff;
+    color: #495057;
+    border: 3px solid #dee2e6;
+    border-radius: 12px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    width: 80%;
-    max-width: 200px;
+    transition: all 0.2s ease;
+    width: 85%;
+    max-width: 240px;
+    font-weight: 500;
+    touch-action: manipulation;
 }
 
-.mode-btn:hover {
-    background-color: #0b7dda;
+.mode-btn:active {
+    transform: scale(0.98);
+    border-color: #adb5bd;
+    background-color: #f8f9fa;
 }
 
 /* 公共模块和玩家模块通用样式 */
 .module {
     background-color: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
     flex: 1;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    border: 2px solid #e9ecef;
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .game-info, .player-info {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     width: 100%;
     margin-bottom: 20px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
+    padding: 12px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    gap: 15px;
 }
 
 .info-item {
     display: flex;
     align-items: center;
-    margin-right: 30px;
+    background-color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    min-width: 120px;
+    justify-content: center;
 }
 
 .label {
-    font-weight: bold;
-    margin-right: 10px;
+    font-weight: 600;
+    margin-right: 6px;
+    color: #6c757d;
+    font-size: 0.9rem;
 }
 
 .value {
-    font-size: 1.2rem;
-    color: #4CAF50;
+    font-size: 1.3rem;
+    color: #495057;
+    font-weight: 700;
 }
 
 /* 动物队列和手牌样式 */
 .queue-display, .player-hand {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .queue-display h3, .player-hand h3, .selected-card h3, .scoreboard h3 {
     margin-bottom: 15px;
-    color: #333;
+    color: #495057;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
 }
 
 /* 动物队列卡片样式 - 一行显示6张卡片 */
 .animal-cards {
     display: flex;
     flex-wrap: nowrap;
-    gap: 10px;
+    gap: 12px;
     margin-bottom: 20px;
     justify-content: center;
     overflow-x: auto;
     padding: 10px 0;
+    -webkit-overflow-scrolling: touch; /* iOS平滑滚动 */
 }
 
 /* 手牌布局样式 */
@@ -144,7 +177,7 @@ header h1 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    gap: 10px;
+    gap: 12px;
     margin-bottom: 20px;
     max-width: 350px;
     justify-items: center;
@@ -152,64 +185,76 @@ header h1 {
 }
 
 .animal-card {
-    width: 100px;
-    height: 140px;
-    border-radius: 8px;
+    width: 90px;
+    height: 120px;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    border: 2px solid #ddd;
+    transition: all 0.2s ease;
+    border: 3px solid #dee2e6;
+    touch-action: manipulation;
 }
 
-.animal-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+.animal-card:active {
+    transform: scale(0.98);
 }
 
 .animal-card.selected {
     border: 3px solid #ff9800;
-    box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+    box-shadow: 0 0 12px rgba(255, 152, 0, 0.3);
 }
 
-/* 动物卡片颜色 */
+/* 动物卡片颜色 - 使用更柔和的色彩 */
 .red {
-    background-color: #ffebee;
-    color: #c62828;
+    background-color: white;
+    color: #e53935;
 }
 
 .green {
-    background-color: #e8f5e9;
-    color: #2e7d32;
+    background-color: white;
+    color: #43a047;
 }
 
 .blue {
-    background-color: #e3f2fd;
-    color: #1565c0;
+    background-color: white;
+    color: #1e88e5;
 }
 
-/* 控制按钮 */
+/* 游戏控制按钮 */
+.control-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
 .game-controls, .player-controls {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
 }
 
 /* 配置按钮样式 */
 .control-btn {
-    padding: 10px 20px;
-    font-size: 1rem;
+    padding: 15px 28px;
+    font-size: 1.1rem;
     background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 12px;
     cursor: pointer;
     margin: 5px;
-    transition: background-color 0.3s;
+    transition: all 0.2s ease;
+    min-width: 140px;
+    font-weight: 600;
+    touch-action: manipulation;
 }
 
 .config-buttons {
@@ -217,22 +262,31 @@ header h1 {
     justify-content: center;
     gap: 10px;
     margin-top: 15px;
+    flex-wrap: wrap;
 }
 
 .control-btn:hover {
     background-color: #45a049;
 }
 
+.control-btn:active {
+    transform: scale(0.97);
+    background-color: #3d8b40;
+}
+
 .control-btn:disabled {
-    background-color: #cccccc;
+    background-color: #dee2e6;
+    color: #6c757d;
     cursor: not-allowed;
 }
 
 /* 得分榜 */
 .scoreboard {
-    background-color: #f9f9f9;
+    margin-bottom: 25px;
+    background-color: #f8f9fa;
     padding: 15px;
-    border-radius: 5px;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
 }
 
 #scores-container {
@@ -242,10 +296,10 @@ header h1 {
 }
 
 .score-item {
-    padding: 5px 10px;
+    padding: 8px 12px;
     background-color: white;
-    border-radius: 3px;
-    border: 1px solid #ddd;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
 }
 
 /* 加分区域 - 模态弹窗样式 */
@@ -257,29 +311,39 @@ header h1 {
     width: 90%;
     max-width: 400px;
     background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
     z-index: 2000;
     text-align: center;
+    border: 2px solid #e9ecef;
+    min-width: 280px;
 }
 
 /* 玩家人数按钮组 */
 .player-count-buttons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
     margin: 20px 0;
+    flex-wrap: wrap;
 }
 
 .count-btn {
-    padding: 15px 20px;
+    padding: 12px 22px;
     font-size: 1.2rem;
-    background-color: #f0f0f0;
-    border: 2px solid #ccc;
-    border-radius: 8px;
+    background-color: #fff;
+    color: #495057;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    touch-action: manipulation;
+}
+
+.count-btn:active {
+    transform: scale(0.98);
 }
 
 .count-btn:hover {
@@ -296,109 +360,125 @@ header h1 {
 /* 玩家昵称配置区域 */
 .player-names-config {
     margin: 20px 0;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
 }
 
+/* 玩家名称列表 */
 .players-names-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     margin: 15px 0;
 }
 
 .player-name-input-container {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
 }
 
 .player-name-input-container label {
-    font-size: 0.9rem;
-    color: #555;
+    font-size: 0.95rem;
+    color: #495057;
+    font-weight: 500;
 }
 
 .input-with-dice {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     width: 100%;
 }
 
 .player-name-input {
-    padding: 10px;
-    font-size: 1rem;
-    border: 2px solid #ccc;
-    border-radius: 5px;
+    padding: 12px 15px;
+    font-size: 1.1rem;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
     flex: 1;
     box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s ease;
+    touch-action: manipulation;
 }
 
+.player-name-input:focus {
+    border-color: #2196F3;
+}
+
+/* 骰子按钮 */
 .dice-btn {
-    padding: 10px 12px;
-    font-size: 1.2rem;
-    background-color: #f0f0f0;
-    border: 2px solid #ccc;
-    border-radius: 5px;
+    padding: 12px 18px;
+    font-size: 1.4rem;
+    background-color: white;
+    border: 3px solid #dee2e6;
+    border-radius: 10px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s;
-    min-width: 40px;
+    transition: all 0.2s ease;
+    min-width: 50px;
     height: 100%;
+    touch-action: manipulation;
 }
 
-.dice-btn:hover {
-    background-color: #e0e0e0;
-    border-color: #4CAF50;
-    transform: rotate(10deg);
-}
-
-.player-name-input:focus {
-    outline: none;
+.dice-btn:active {
+    transform: scale(0.97);
     border-color: #4CAF50;
 }
 
 /* 选择器样式 */
 .card-selector {
-    margin-bottom: 15px;
-    padding: 15px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 18px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
 }
 
 .selection-group {
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+}
+
+.selection-group:last-child {
+    margin-bottom: 0;
 }
 
 .selection-group h4 {
-    margin-bottom: 10px;
-    color: #333;
+    margin-bottom: 12px;
+    color: #495057;
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+    font-weight: 600;
 }
 
 .selection-buttons {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
 /* 动物选择按钮 */
 .animal-btn {
-    padding: 12px 16px;
-    font-size: 1rem;
+    padding: 15px 18px;
+    font-size: 1.5rem;
     background-color: white;
-    border: 2px solid #ddd;
-    border-radius: 8px;
+    border: 3px solid #dee2e6;
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s;
-    min-width: 30%;
-    margin-bottom: 8px;
+    transition: all 0.2s ease;
+    min-width: 80px;
+    margin-bottom: 10px;
+    touch-action: manipulation;
 }
 
-.animal-btn:hover {
-    background-color: #f5f5f5;
+.animal-btn:active {
+    transform: scale(0.97);
     border-color: #2196F3;
 }
 
@@ -406,28 +486,30 @@ header h1 {
     background-color: #2196F3;
     color: white;
     border-color: #2196F3;
+    border-color: #2196F3;
 }
 
 /* 颜色选择按钮 */
 .color-btn {
-    padding: 12px 16px;
-    font-size: 1rem;
-    border: 2px solid #ddd;
-    border-radius: 8px;
+    padding: 15px 20px;
+    font-size: 1.5rem;
+    border: 3px solid #dee2e6;
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s;
-    min-width: 30%;
+    transition: all 0.2s ease;
+    min-width: 85px;
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    touch-action: manipulation;
 }
 
-.color-btn:hover {
-    transform: translateY(-2px);
+.color-btn:active {
+    transform: scale(0.97);
 }
 
 .color-btn.selected {
     border: 3px solid #ff9800;
-    box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+    box-shadow: 0 0 12px rgba(255, 152, 0, 0.3);
 }
 
 /* 数字选择按钮 */
@@ -436,20 +518,21 @@ header h1 {
 }
 
 .number-btn {
-    width: 45px;
-    height: 45px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     background-color: white;
-    border: 2px solid #ddd;
+    border: 3px solid #dee2e6;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1.1rem;
-    transition: all 0.3s;
-    margin-bottom: 8px;
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
+    margin-bottom: 10px;
+    touch-action: manipulation;
 }
 
-.number-btn:hover {
-    background-color: #f5f5f5;
+.number-btn:active {
+    transform: scale(0.95);
     border-color: #2196F3;
 }
 
@@ -461,31 +544,38 @@ header h1 {
 
 /* 预览卡片 */
 .player-preview {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-align: center;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
 }
 
 .player-preview h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #495057;
+    font-weight: 600;
 }
 
 .preview-card {
-    width: 120px;
-    height: 160px;
+    width: 110px;
+    height: 140px;
     margin: 0 auto;
     background-color: white;
-    border: 2px solid #ddd;
-    border-radius: 10px;
+    border: 3px solid #dee2e6;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* 游戏结束区域 - 模态弹窗样式 */
@@ -494,14 +584,15 @@ header h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 400px;
+    width: 95%;
+    max-width: 450px;
     background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
     z-index: 2000;
     text-align: center;
+    border: 2px solid #e9ecef;
 }
 
 .final-ranking {
@@ -509,10 +600,13 @@ header h1 {
 }
 
 .ranking-item {
-    padding: 10px;
-    margin-bottom: 8px;
-    border-radius: 5px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
     font-weight: bold;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    font-size: 1.1rem;
 }
 
 .ranking-item.rank-1 {
@@ -569,12 +663,13 @@ header h1 {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    border: 5px solid #ddd;
-    transition: transform 0.2s;
+    border: 5px solid #dee2e6;
+    transition: transform 0.2s ease;
+    touch-action: manipulation;
 }
 
-.fullscreen-card:hover {
-    transform: scale(1.02);
+.fullscreen-card:active {
+    transform: scale(0.98);
 }
 
 /* 自定义模态框样式 */
@@ -589,6 +684,7 @@ header h1 {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    backdrop-filter: blur(3px);
 }
 
 /* 提高hidden类的优先级，确保它能正确隐藏元素 */
@@ -598,37 +694,52 @@ header h1 {
 
 .modal-content {
     background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    max-width: 400px;
-    width: 90%;
+    border-radius: 15px;
+    padding: 25px;
+    max-width: 450px;
+    width: 95%;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e9ecef;
+    animation: modalAppear 0.3s ease-out;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .modal-content h3 {
-    color: #4CAF50;
+    color: #495057;
     margin-bottom: 15px;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    font-weight: 600;
 }
 
 .modal-content p {
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 1rem;
+    color: #495057;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
     line-height: 1.5;
 }
 
 .modal-buttons {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     .game-info, .player-info {
@@ -636,18 +747,83 @@ header h1 {
         gap: 10px;
     }
     
-    .animal-cards {
-        justify-content: center;
+    .animal-card {
+        width: 80px;
+        height: 110px;
     }
     
-    .game-controls, .player-controls {
+    .player-hand .animal-cards {
+        gap: 8px;
+        max-width: 300px;
+    }
+    
+    .control-buttons {
         flex-direction: column;
         align-items: center;
     }
     
-    .mode-btn {
-        display: block;
-        margin: 10px auto;
-        width: 80%;
+    .control-btn {
+        width: 90%;
+        max-width: 300px;
     }
+    
+    .selection-buttons {
+        gap: 8px;
+    }
+    
+    .animal-btn, .color-btn {
+        min-width: 70px;
+        font-size: 1.3rem;
+        padding: 12px 15px;
+    }
+    
+    .number-btn {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .preview-card {
+        width: 100px;
+        height: 130px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .animal-card {
+        width: 75px;
+        height: 105px;
+    }
+    
+    .player-hand .animal-cards {
+        gap: 6px;
+        max-width: 280px;
+    }
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
 }
