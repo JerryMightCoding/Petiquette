@@ -12,7 +12,7 @@ const GAME_CONFIG = {
 };
 
 // 卡牌类型定义
-const ANIMAL_TYPES = ['狗', '鸟', '猫'];
+const ANIMAL_TYPES = ['🐶', '🐦', '🐱'];
 const COLOR_TYPES = ['red', 'green', 'blue'];
 const NUMBER_VALUES = [1, 2, 3, 4, 5];
 
