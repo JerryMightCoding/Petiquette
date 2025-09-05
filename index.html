@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>动物礼仪师 - 桌游</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>动物礼仪师</h1>
+        </header>
+        
+        <!-- 游戏模式选择 -->
+        <div class="mode-selector">
+            <h2>游戏模式</h2>
+            <button id="public-mode-btn" class="mode-btn">公共模块</button>
+            <button id="player-mode-btn" class="mode-btn">玩家模块</button>
+        </div>
+        
+        <!-- 玩家人数配置 -->
+        <div id="player-config" class="module hidden">
+            <h2>配置玩家人数</h2>
+            <div class="player-count-buttons">
+                <button class="count-btn" data-count="3">3人</button>
+                <button class="count-btn" data-count="4">4人</button>
+                <button class="count-btn" data-count="5">5人</button>
+                <button class="count-btn" data-count="6">6人</button>
+            </div>
+            <div id="player-names-config" class="player-names-config hidden">
+                <h3>配置玩家昵称</h3>
+                <div id="players-names-list" class="players-names-list">
+                    <!-- 玩家昵称输入框将通过JS动态生成 -->
+                </div>
+            </div>
+            <div class="config-buttons">
+                <button id="back-to-count-btn" class="control-btn hidden">返回主菜单</button>
+                <button id="confirm-players-btn" class="control-btn">确认</button>
+            </div>
+        </div>
+        
+        <!-- 公共模块 -->
+        <div id="public-module" class="module hidden">
+            <div class="game-info">
+                <div class="info-item">
+                    <span class="label">当前轮次:</span>
+                    <span id="current-round" class="value">1</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">玩家人数:</span>
+                    <span id="player-count-display" class="value">3</span>
+                </div>
+            </div>
+            
+            <div class="queue-display">
+                <h3>动物队列</h3>
+                <div id="animal-queue" class="animal-cards">
+                    <!-- 等待游戏开始... -->
+                </div>
+            </div>
+            
+            <div class="game-controls">
+                <button id="start-game-btn" class="control-btn">开始游戏</button>
+                <button id="score-control-btn" class="control-btn hidden">结算分数</button>
+                <button id="back-to-menu-public-btn" class="control-btn">返回主菜单</button>
+            </div>
+            
+            <!-- 加分区域 -->
+            <div id="score-bonus-area" class="module hidden">
+                <h3>加分操作</h3>
+                <div id="players-score-buttons" class="player-score-buttons">
+                    <!-- 玩家加分按钮将通过JS动态生成 -->
+                </div>
+            </div>
+            
+            <div id="scoreboard" class="scoreboard">
+                <h3>得分榜</h3>
+                <div id="scores-container">
+                    <!-- 得分信息将通过JS动态生成 -->
+                </div>
+            </div>
+            
+            <!-- 游戏结束区域 -->
+            <div id="game-end-area" class="module hidden">
+                <h2>游戏结束！</h2>
+                <div id="final-ranking" class="final-ranking">
+                    <!-- 最终排名将通过JS动态生成 -->
+                </div>
+                <button id="back-to-menu-btn" class="control-btn">回到主菜单</button>
+            </div>
+        </div>
+        
+        <!-- 玩家模块 -->
+        <div id="player-module" class="module hidden">
+            <div class="card-selector">
+                <h3>选择卡牌</h3>
+                
+                <!-- 动物选择 -->
+                <div class="selection-group">
+                    <h4>选择动物</h4>
+                    <div id="animal-selection" class="selection-buttons">
+                        <button class="animal-btn" data-animal="狗">🐶 狗</button>
+                        <button class="animal-btn" data-animal="猫">🐱 猫</button>
+                        <button class="animal-btn" data-animal="鸟">🐦 鸟</button>
+                    </div>
+                </div>
+                
+                <!-- 颜色选择 -->
+                <div class="selection-group">
+                    <h4>选择颜色</h4>
+                    <div id="color-selection" class="selection-buttons">
+                        <button class="color-btn red" data-color="red">红色</button>
+                        <button class="color-btn green" data-color="green">绿色</button>
+                        <button class="color-btn blue" data-color="blue">蓝色</button>
+                    </div>
+                </div>
+                
+                <!-- 数字选择 -->
+                <div class="selection-group">
+                    <h4>选择数字</h4>
+                    <div id="number-selection" class="selection-buttons">
+                        <button class="number-btn" data-number="1">1</button>
+                        <button class="number-btn" data-number="2">2</button>
+                        <button class="number-btn" data-number="3">3</button>
+                        <button class="number-btn" data-number="4">4</button>
+                        <button class="number-btn" data-number="5">5</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="player-preview">
+                <h3>你的卡牌预览</h3>
+                <div id="preview-card" class="preview-card">
+                    <div style="font-size: 2rem;">?</div>
+                    <div style="font-size: 1.5rem;">?</div>
+                </div>
+            </div>
+            
+            <div class="player-controls">
+                <button id="back-to-menu-player-btn" class="control-btn">返回主菜单</button>
+            </div>
+        </div>
+        
+        <!-- 全屏展示容器 -->
+        <div id="fullscreen-display" class="fullscreen-overlay hidden">
+            <div id="fullscreen-card" class="fullscreen-card">
+                <div style="font-size: 5rem;"></div>
+                <div style="font-size: 3rem;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 自定义确认模态框 -->
+    <div id="custom-confirm-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3 id="modal-title">确认操作</h3>
+            <p id="modal-message">确定要执行此操作吗？</p>
+            <div class="modal-buttons">
+                <button id="modal-confirm" class="control-btn">确定</button>
+                <button id="modal-cancel" class="control-btn">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
