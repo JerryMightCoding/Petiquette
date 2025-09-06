@@ -185,9 +185,9 @@ header h1 {
 }
 
 .animal-card {
-    width: 90px;
-    height: 120px;
-    border-radius: 12px;
+    width: 180px;
+    height: 240px;
+    border-radius: 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -195,7 +195,7 @@ header h1 {
     font-weight: bold;
     cursor: pointer;
     transition: all 0.2s ease;
-    border: 3px solid #dee2e6;
+    border: 5px solid #dee2e6;
     touch-action: manipulation;
 }
 
@@ -210,17 +210,17 @@ header h1 {
 
 /* 动物卡片颜色 - 使用更柔和的色彩 */
 .red {
-    background-color: white;
+    background-color: rgb(255, 208, 208);
     color: #e53935;
 }
 
 .green {
-    background-color: white;
+    background-color: rgb(192, 255, 196);
     color: #43a047;
 }
 
 .blue {
-    background-color: white;
+    background-color: #93c4ff;
     color: #1e88e5;
 }
 
@@ -318,6 +318,72 @@ header h1 {
     text-align: center;
     border: 2px solid #e9ecef;
     min-width: 280px;
+}
+
+/* 玩家加分按钮容器 */
+.player-score-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+/* 玩家加分条目 */
+.player-score-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* 玩家名称和分数显示 */
+.player-name {
+    font-weight: 600;
+    color: #495057;
+    font-size: 1.1rem;
+    min-width: 80px;
+    text-align: left;
+}
+
+.player-score {
+    font-weight: 700;
+    color: #2196F3;
+    font-size: 1.2rem;
+    min-width: 60px;
+    text-align: center;
+}
+
+/* 加分按钮 - 移动端优化 */
+.bonus-btn {
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 100px;
+    touch-action: manipulation;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bonus-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.bonus-btn:active {
+    transform: scale(0.95);
+    background-color: #3d8b40;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 /* 玩家人数按钮组 */
@@ -786,6 +852,40 @@ header h1 {
         width: 100px;
         height: 130px;
     }
+    
+    /* 移动端加分按钮优化 */
+    #score-bonus-area {
+        width: 95%;
+        max-width: 350px;
+        padding: 20px 15px;
+    }
+    
+    .player-score-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px 15px;
+        gap: 12px;
+    }
+    
+    .player-name {
+        font-size: 1.2rem;
+        min-width: auto;
+        text-align: center;
+    }
+    
+    .player-score {
+        font-size: 1.3rem;
+        min-width: auto;
+    }
+    
+    .bonus-btn {
+        width: 100%;
+        max-width: 200px;
+        padding: 18px 30px;
+        font-size: 1.3rem;
+        min-width: 120px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -805,6 +905,25 @@ header h1 {
     .player-hand .animal-cards {
         gap: 6px;
         max-width: 280px;
+    }
+    
+    /* 超小屏幕加分按钮优化 */
+    #score-bonus-area {
+        width: 98%;
+        max-width: 320px;
+        padding: 15px 10px;
+    }
+    
+    .player-score-container {
+        padding: 15px 10px;
+        gap: 10px;
+    }
+    
+    .bonus-btn {
+        padding: 20px 35px;
+        font-size: 1.4rem;
+        max-width: 220px;
+        min-height: 60px;
     }
 }
 

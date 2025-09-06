@@ -515,7 +515,7 @@ function startScoreBonusPhase() {
         playerScoreContainer.className = 'player-score-container';
         
         playerScoreContainer.innerHTML = `
-            <span class="player-name">${player}:</span>
+            <span class="player-name">${player}</span>
             <span class="player-score">${gameState.scores[player]}分</span>
             <button class="bonus-btn" data-player="${player}">+${currentRoundScore}分</button>
         `;
@@ -581,7 +581,7 @@ function showGameEndScreen() {
         else if (index === 1) medal = '🥈';
         else if (index === 2) medal = '🥉';
         
-        rankItem.textContent = `${medal} 第${index + 1}名: ${player} - ${score}分`;
+        rankItem.textContent = `${medal} 第${index + 1}名 ${player}     ${score}分`;
         elements.finalRanking.appendChild(rankItem);
     });
     
@@ -641,6 +641,24 @@ function showFullscreenCard(card) {
     
     numberElement.textContent = card.number;
     animalElement.textContent = card.animal;
+    
+    // 根据选择的颜色设置背景颜色
+    const colorMap = {
+        'red': '#ffebee',
+        'blue': '#e3f2fd',
+        'green': '#e8f5e8',
+        'yellow': '#fffde7',
+        'purple': '#f3e5f5',
+        'orange': '#fff3e0',
+        'pink': '#fce4ec',
+        'brown': '#efebe9'
+    };
+    
+    if (card.color && colorMap[card.color]) {
+        elements.fullscreenCard.style.backgroundColor = colorMap[card.color];
+    } else {
+        elements.fullscreenCard.style.backgroundColor = 'white'; // 默认背景色
+    }
     
     // 显示全屏容器
     elements.fullscreenDisplay.classList.remove('hidden');
@@ -743,6 +761,24 @@ function updatePreviewCard() {
         <div style="font-size: 2rem;">${number}</div>
         <div style="font-size: 1.5rem;">${animal}</div>
     `;
+    
+    // 根据选择的颜色设置背景颜色
+    const colorMap = {
+        'red': '#ffebee',
+        'blue': '#e3f2fd',
+        'green': '#e8f5e8',
+        'yellow': '#fffde7',
+        'purple': '#f3e5f5',
+        'orange': '#fff3e0',
+        'pink': '#fce4ec',
+        'brown': '#efebe9'
+    };
+    
+    if (color && colorMap[color]) {
+        elements.previewCard.style.backgroundColor = colorMap[color];
+    } else {
+        elements.previewCard.style.backgroundColor = '#f5f5f5'; // 默认背景色
+    }
 }
 
 // 注意：确认选择、重新选择功能已移除，改为直接点击预览卡片全屏展示
@@ -847,7 +883,7 @@ function updateScoreboard() {
     sortedPlayers.forEach(([player, score]) => {
         const scoreItem = document.createElement('div');
         scoreItem.className = 'score-item';
-        scoreItem.textContent = `${player}: ${score}分`;
+        scoreItem.textContent = `${player} ${score}分`;
         elements.scoreboard.appendChild(scoreItem);
     });
 }
